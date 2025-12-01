@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="assets/lampara_light.png" type="image/png">
+    <title>Tarjeta de Asistencia</title>
+    <style>
+	:root {
+      --preppy-bg: #f5efe7;
+      --preppy-primary: #89cff0;
+      --preppy-secondary: #ffc8dd;
+      --preppy-text: #333;
+      --radius: 16px;
+      --transition: 0.3s ease;
+	  --textBlue:#6f8e78;
+    --textBlack: #c8ccd3;
+	  --rojito:#f5576c;
+	  --otio:#dc3545;
+    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--textBlue) 0%, var(--rojito) 100%);
+             font-family: "Poppins", sans-serif;
+			 font-size:1em;
+      background: var(--preppy-bg);
+      color: var(--preppy-text);
+      justify-content: center;
+      padding: 1rem;
+        }
+
+		
+	.container{display: flex;gap: .5rem;justify-content: center;max-width: 1220px;margin: 0 auto;}
+
+    .card {
+		display:flex;
+		flex-direction:column;
+		gap:1rem;	
+      width: 100%;
+      border-radius: var(--radius);
+      overflow: hidden;
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    } 
+	@keyframes fadeIn2 {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+    }
+	
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+			
+			-webkit-text-stroke-width: 0.5px;
+			-webkit-text-stroke-color: grey;
+			text-transform: uppercase;
+			text-shadow: rgb(0, 0, 0) 2px 2px 4px;
+			white-space: nowrap;
+            font-weight: 300;
+			
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            color: var(--textBlue);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+        }
+
+        /* Modal personalizado */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { 
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to { 
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            animation: slideIn 0.3s ease;
+        }
+
+        .modal-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .modal-icon.success {
+            color: #28a745;
+        }
+
+        .modal-icon.error {
+            color: #dc3545;
+        }
+
+        .modal-icon.warning {
+            color: #ffc107;
+        }
+
+        .modal-title {
+            font-size: 1.8em;
+            color: #1e3c72;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .modal-message {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .modal-btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-width: 120px;
+        }
+
+        .modal-btn-primary {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+        }
+
+        .modal-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(42, 82, 152, 0.4);
+        }
+
+        .modal-btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .modal-btn-secondary:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+
+        .modal-btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .modal-btn-success:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+
+        /* Toast notifications */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 20px 25px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: none;
+            align-items: center;
+            gap: 15px;
+            z-index: 2000;
+            min-width: 300px;
+            animation: slideInRight 0.3s ease;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .toast.show {
+            display: flex;
+        }
+
+        .toast-icon {
+            font-size: 2em;
+        }
+
+        .toast-content {
+            flex: 1;
+        }
+
+        .toast-title {
+            font-weight: 600;
+            color: #1e3c72;
+            margin-bottom: 5px;
+        }
+
+        .toast-message {
+            color: #555;
+            font-size: 0.9em;
+        }
+
+        .info-section {
+		
+			font-family: "Playfair Display", serif;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+        }
+
+        .info-section h2 {
+            color: var(--preppy-primary);
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            padding-bottom: 10px;
+        }
+
+        .info-section p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .info-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-section li {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.05em;
+            margin-bottom: 10px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .info-section li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2a5298;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+        }
+
+        .form-container h2 {
+            color: #1e3c72;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        label .required {
+            color: #dc3545;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #2a5298;
+            box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.1);
+        }
+
+        input.error-field, select.error-field {
+            border-color: #dc3545;
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .error {
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: 8px;
+            display: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            background: #ffe6e6;
+            border-radius: 5px;
+            border-left: 3px solid #dc3545;
+        }
+
+        .error.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        button {
+            width: 100%;
+            padding: .6rem .85rem;
+            background: linear-gradient(135deg, var(--textBlue) 0%, var(--textBlack) 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(42, 82, 152, 0.4);
+			background: linear-gradient(135deg, #1f5724bd 0%, #020814b3 100%);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: center;
+            border-top: 4px solid #2a5298;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card h3 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            color: #2a5298;
+            animation: countUp 0.5s ease;
+        }
+
+        @keyframes countUp {
+            from { 
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to { 
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .confirmed-list {
+            margin-top: 15px;
+            text-align: left;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .confirmed-name {
+            background: #f0f4ff;
+            padding: 10px 15px;
+            margin: 8px 0;
+            border-radius: 8px;
+            font-size: 14px;
+            border-left: 3px solid #2a5298;
+            animation: slideIn 0.3s ease;
+        }
+
+        .table-container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow-x: auto;
+        }
+
+        .table-container h2 {
+            color: #1e3c72;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        th {
+            background: #020814b3;
+            color: white;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+
+        tbody tr {
+            animation: fadeIn 0.3s ease;
+        }
+
+        tr:hover {
+            background: #f8faff;
+        }
+
+        .badge {
+            padding: 6px 14px;
+            border-radius: 10px;
+            font-size: .7em;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        .badge-si {
+            background: #28a745;
+            color: white;
+        }
+
+        .badge-no {
+            background: #dc3545;
+            color: white;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: #999;
+            padding: 40px;
+        }
+		  
+    .containerLimite, .dash{
+      background: white;
+      padding: .5rem;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+	.dash{animation: fadeIn2 0.8s ease;flex: 2 1 0;}
+	
+	
+  .modal{
+    position:fixed;inset:0;display:none;align-items:center;justify-content:center;
+    backdrop-filter: blur(4px); background:rgba(2,6,23,0.4); z-index:60;
+  }
+  .modal.open{display:flex;}
+  .modal .panel{background:var(--card); padding:1.25rem;border-radius:12px; max-width:520px; width:94%; box-shadow:0 20px 60px rgba(2,6,23,0.45);}
+  .tiny{ font-size:.86rem; color:var(--muted) }
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: .5rem;
+      margin-bottom: 20px;
+    }
+
+    .time-box {
+      background: linear-gradient(135deg, var(--textBlack) 0%, var(--textBlack) 100%);
+      padding: .5rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .time-number {
+      font-size: 36px;
+      font-weight: bold;
+      color: white;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .time-label {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.9);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+	
+	#pFaltanDias{text-shadow:0px 1px 1px var(--rojito);}	
+
+
+    .finalizado {
+      background: linear-gradient(135deg, #f093fb 0%, var(--rojito) 100%);
+      color: white;
+      padding: 30px;
+      border-radius: 15px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+	
+	
+  .controls{display:flex; gap:.5rem; margin-top:1rem; flex-wrap:wrap}
+  button, .linkbtn{
+    border:0;padding:.6rem .85rem;border-radius:10px;font-weight:600;    
+	color:white; cursor:pointer;
+    box-shadow:0 8px 20px rgba(79,70,229,0.12);
+    transition:transform .12s, box-shadow .12s, opacity .12s;
+  }
+  .linkbtn { background:transparent; color:var(--accent); box-shadow:none; padding:0.5rem 0.6rem; border: 1px solid rgba(79,70,229,0.08);}
+
+	
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .subtitle {
+                font-size: 1em;
+            }
+
+            .form-container, .info-section, .table-container {
+                padding: 20px;
+            }
+
+            .modal-content {
+                padding: 25px 20px;
+            }
+
+            .toast {
+                right: 10px;
+                left: 10px;
+                min-width: auto;
+            }
+
+            table {
+                font-size: .6em;
+            }
+
+            th, td {
+                padding: .6rem;
+            }
+			
+			.container{flex-direction:column;
+			}
+			.countdown {
+				grid-template-columns: repeat(2, 1fr);
+			  }
+			  
+			  h1 {
+				font-size: 24px;
+			  }
+			  
+			  .time-number {
+				font-size: 28px;
+			  }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+	<div class="card">
+		<img src="assets/Kari1.jpeg"" alt="Fotode Kari" loading="lazy" class="hero-img">
+        <h1>🎉 Invitación Especial</h1>
+        <p class="subtitle">Confirmación de Asistencia</p>
+
+		<div class="controls">
+            <button class="btn" onclick="openMaps()">Ver ubicación 🚩</button>
+          <button id="shareBtn" type="button">Compartir URL</button>
+        </div>
+		
+		
+
+        <div class="form-container">
+            <h2>Confirma tu Asistencia</h2>
+            <form id="asistenciaForm">
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo <span class="required">*</span></label>
+                    <input type="text" id="nombre" placeholder="Ingresa tu nombre completo">
+                    <div class="error" id="nombreError">⚠ Por favor ingresa tu nombre completo</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ci">Cédula de Identidad <span class="required">*</span></label>
+                    <input type="text" id="ci" placeholder="Ingresa tu cédula de identidad">
+                    <div class="error" id="ciError">⚠ Por favor ingresa tu cédula de identidad</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmacion">¿Confirmas tu asistencia? <span class="required">*</span></label>
+                    <select id="confirmacion">
+                        <option value="">-- Selecciona una opción --</option>
+                        <option value="true">Sí, asistiré</option>
+                        <option value="false">No podré asistir</option>
+                    </select>
+                    <div class="error" id="confirmacionError">⚠ Por favor selecciona si asistirás o no</div>
+                </div>
+
+                <button type="submit">Confirmar Asistencia</button>
+            </form>
+        </div>
+		
+        <div class="info-section">
+            <h2>📅 ¿Por qué celebramos?</h2>
+            <p>
+                Estamos emocionados de invitarte a nuestra gran celebración. Después de un año lleno de 
+                logros, desafíos superados y momentos inolvidables, queremos reunirnos para celebrar juntos 
+                este hito tan importante en nuestras vidas.
+            </p>
+            <p>
+                Este evento especial marca el comienzo de una nueva etapa, y queremos compartir este momento 
+                de alegría con las personas que más apreciamos. Será una noche llena de sorpresas, música, 
+                buena comida y sobre todo, excelente compañía.
+            </p>
+        </div>
+
+        <div class="info-section">
+            <h2>✨ ¿Por qué deberías venir?</h2>
+            <ul>
+                <li>Compartir momentos únicos e inolvidables con amigos y seres queridos</li>
+                <li>Disfrutar de una velada especialmente preparada con deliciosa gastronomía</li>
+                <li>Música en vivo y entretenimiento de primera clase durante toda la noche</li>
+                <li>Sorpresas y actividades especiales que no querrás perderte</li>
+                <li>Crear nuevos recuerdos y fortalecer lazos de amistad</li>
+                <li>Ser parte de una celebración que recordaremos por muchos años</li>
+            </ul>
+        </div>
+		</div>
+	  <div class="dash">
+	  
+		  <div class="containerLimite">
+				<h2>🎄 Cuenta Regresiva 🎄</h2>
+				 <p class="fecha-limite" id="fechaFormateada"></p>
+		
+				<div class="countdown">
+				  <div class="time-box">
+					<span class="time-number" id="dias">00</span>
+					<span class="time-label">Días</span>
+				  </div>
+				  <div class="time-box">
+					<span class="time-number" id="horas">00</span>
+					<span class="time-label">Horas</span>
+				  </div>
+				  <div class="time-box">
+					<span class="time-number" id="minutos">00</span>
+					<span class="time-label">Minutos</span>
+				  </div>
+				  <div class="time-box">
+					<span class="time-number" id="segundos">00</span>
+					<span class="time-label">Segundos</span>
+				  </div>
+				</div>
+			
+			  <p id="pFaltanDias">---</p>
+			</div>
+			
+        <div class="stats-container">
+            <div class="stat-card">
+                <h3>📊 Total de Invitados</h3>
+                <div class="stat-number" id="totalInvitados">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>✅ Confirmados</h3>
+                <div class="stat-number" id="totalConfirmados">0</div>
+                <div class="confirmed-list" id="confirmedList"></div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <h2>Lista de Invitados Registrados</h2>
+            <table id="invitadosTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Cédula</th>
+                        <th>Confirmación</th>
+                        <th>Fecha de Registro</th>
+                    </tr>
+                </thead>
+                <tbody id="invitadosBody">
+                    <tr>
+                        <td colspan="5" class="empty-state">No hay invitados registrados aún</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+	
+ <!-- modal para compartir -->
+    <div id="modal" class="modal" role="dialog" aria-hidden="true">
+      <div class="panel">
+        <h3 id="modalTitle">Compartir invitación</h3>
+        <p id="modalText" class="tiny">URL lista para copiar</p>
+        <div style="display:flex;gap:.5rem;margin-top:.6rem;">
+          <button id="copyBtn">Copiar</button>
+          <button id="closeModal" class="linkbtn">Cerrar</button>
+        </div>
+      </div>
+    </div>
+    <!-- Modal personalizado -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <div class="modal-icon" id="modalIcon"></div>
+            <div class="modal-title" id="modalTitle"></div>
+            <div class="modal-message" id="modalMessage"></div>
+            <div class="modal-buttons" id="modalButtons"></div>
+        </div>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast">
+        <div class="toast-icon" id="toastIcon"></div>
+        <div class="toast-content">
+            <div class="toast-title" id="toastTitle"></div>
+            <div class="toast-message" id="toastMessage"></div>
+        </div>
+    </div>
+</div>
+
+    <script>
+        //datos de prueba si noi quiero cargar desde BD
+  const invitados=[
+	  {  id: generarID(),
+		 nombre: "Ana",
+		 cedulaIdentidad: "5.623.984-9",
+		 confirmacion:true,
+		 fechaIngreso: formatearFecha()
+	   },
+	   {  id: generarID(),
+		 nombre: "Peter",
+		 cedulaIdentidad: "3.124.653-7",
+		 confirmacion:true,
+		 fechaIngreso:formatearFecha()
+	   },
+	   {  id: generarID(),
+		 nombre: "Lolo",
+		 cedulaIdentidad: "1.542.544-9",
+		 confirmacion:true,
+		 fechaIngreso:formatearFecha()
+	   },
+	   {  id: generarID(),
+		 nombre: "Julio",
+		 cedulaIdentidad: "2.345.657-2",
+		 confirmacion:false,
+		 fechaIngreso:formatearFecha()
+	   }
+  ]
+
+        function generarID() {
+            return 'INV-' + Math.random().toString(36).substr(2, 4).toUpperCase();
+        }
+
+        function formatearFecha() {
+            const now = new Date();
+            const dia = String(now.getDate()).padStart(2, '0');
+            const mes = String(now.getMonth() + 1).padStart(2, '0');
+            const año = now.getFullYear();
+            const hora = String(now.getHours()).padStart(2, '0');
+            const minutos = String(now.getMinutes()).padStart(2, '0');
+            const segundos = String(now.getSeconds()).padStart(2, '0');
+            return `${dia}/${mes}/${año} `;
+        }
+
+        // Sistema de modal personalizado
+        function showModal(title, message, icon, buttons) {
+            const modal = document.getElementById('modalOverlay');
+            const modalIcon = document.getElementById('modalIcon');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalMessage = document.getElementById('modalMessage');
+            const modalButtons = document.getElementById('modalButtons');
+
+            modalIcon.textContent = icon;
+            modalIcon.className = 'modal-icon ' + (icon === '✅' ? 'success' : icon === '❌' ? 'error' : 'warning');
+            modalTitle.textContent = title;
+            modalMessage.textContent = message;
+            
+            modalButtons.innerHTML = '';
+            buttons.forEach(btn => {
+                const button = document.createElement('button');
+                button.className = 'modal-btn ' + btn.class;
+                button.textContent = btn.text;
+                button.onclick = () => {
+                    modal.classList.remove('show');
+                    if (btn.callback) btn.callback();
+                };
+                modalButtons.appendChild(button);
+            });
+
+            modal.classList.add('show');
+        }
+
+        // Sistema de toast notification
+        function showToast(title, message, icon) {
+            const toast = document.getElementById('toast');
+            const toastIcon = document.getElementById('toastIcon');
+            const toastTitle = document.getElementById('toastTitle');
+            const toastMessage = document.getElementById('toastMessage');
+
+            toastIcon.textContent = icon;
+            toastTitle.textContent = title;
+            toastMessage.textContent = message;
+
+            toast.classList.add('show');
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        }
+
+        function actualizarEstadisticas() {
+            const totalInvitados = invitados.length;
+            const confirmados = invitados.filter(inv => inv.confirmacion === true);
+            
+            document.getElementById('totalInvitados').textContent = totalInvitados;
+            document.getElementById('totalConfirmados').textContent = confirmados.length;
+            
+            const confirmedList = document.getElementById('confirmedList');
+            confirmedList.innerHTML = '';
+            
+            if (confirmados.length === 0) {
+                confirmedList.innerHTML = '<p style="color: #999; font-size: 14px; text-align: center; margin-top: 10px;">No hay confirmados aún</p>';
+            } else {
+                confirmados.forEach(inv => {
+                    const div = document.createElement('div');
+                    div.className = 'confirmed-name';
+                    div.textContent = inv.nombre;
+                    confirmedList.appendChild(div);
+                });
+            }
+        }
+
+        function actualizarTabla() {
+            const tbody = document.getElementById('invitadosBody');
+            
+            if (invitados.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="empty-state">No hay invitados registrados aún</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = '';
+            invitados.forEach(invitado => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><strong>${invitado.id}</strong></td>
+                    <td>${invitado.nombre}</td>
+                    <td>${invitado.cedulaIdentidad}</td>
+                    <td><span class="badge ${invitado.confirmacion ? 'badge-si' : 'badge-no'}">${invitado.confirmacion ? 'Sí asistiré' : 'No asistiré'}</span></td>
+                    <td>${invitado.fechaIngreso}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        document.getElementById('asistenciaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Limpiar errores previos
+            document.querySelectorAll('.error').forEach(error => error.classList.remove('show'));
+            document.querySelectorAll('input, select').forEach(field => field.classList.remove('error-field'));
+            
+            const nombre = document.getElementById('nombre').value.trim();
+            const ci = document.getElementById('ci').value.trim();
+            const confirmacionValue = document.getElementById('confirmacion').value;
+            
+            let esValido = true;
+            
+            // Validar nombre (requerido)
+            if (!nombre) {
+                document.getElementById('nombreError').classList.add('show');
+                document.getElementById('nombre').classList.add('error-field');
+                esValido = false;
+            }
+            
+            // Validar cédula (requerido)
+            if (!ci) {
+                document.getElementById('ciError').classList.add('show');
+                document.getElementById('ci').classList.add('error-field');
+                esValido = false;
+            }
+            
+            // Validar confirmación (requerido)
+            if (!confirmacionValue) {
+                document.getElementById('confirmacionError').classList.add('show');
+                document.getElementById('confirmacion').classList.add('error-field');
+                esValido = false;
+            }
+            
+            if (!esValido) {
+                showModal(
+                    'Campos Incompletos',
+                    'Por favor completa todos los campos requeridos antes de continuar.',
+                    '❌',
+                    [{ text: 'Entendido', class: 'modal-btn-primary' }]
+                );
+                return;
+            }
+            
+            const confirmacion = confirmacionValue === 'true';
+            
+            // Si seleccionó "No", mostrar confirmación
+            if (!confirmacion) {
+                showModal(
+                    '¿Estás seguro?',
+                    '¿Confirmas que no podrás asistir a la celebración? Nos encantaría contar con tu presencia.',
+                    '⚠️',
+                    [
+                        { 
+                            text: 'Cancelar', 
+                            class: 'modal-btn-secondary'
+                        },
+                        { 
+                            text: 'Sí, no podré asistir', 
+                            class: 'modal-btn-primary',
+                            callback: () => registrarInvitado(nombre, ci, confirmacion)
+                        }
+                    ]
+                );
+                return;
+            }
+            
+            registrarInvitado(nombre, ci, confirmacion);
+        });
+
+        function registrarInvitado(nombre, ci, confirmacion) {
+            // Crear invitado con todos los datos requeridos
+            const invitado = {
+                id: generarID(),
+                nombre: nombre,
+                cedulaIdentidad: ci,
+                confirmacion: confirmacion,
+                fechaIngreso: formatearFecha()
+            };
+            
+            // Agregar a la lista
+            invitados.push(invitado);
+            
+            console.log('Invitado agregado:', invitado);
+            console.log('Total invitados:', invitados.length);
+            
+            // Actualizar interfaz
+            actualizarEstadisticas();
+            actualizarTabla();
+            
+            // Limpiar formulario
+            document.getElementById('asistenciaForm').reset();
+            
+            // Scroll suave a la tabla
+            setTimeout(() => {
+                document.querySelector('.table-container').scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }, 500);
+            
+            // Mostrar mensaje de éxito
+            if (confirmacion) {
+                showToast(
+                    '¡Confirmación Exitosa!',
+                    '¡Excelente! Tu asistencia ha sido confirmada. ¡Te esperamos!',
+                    '🎉'
+                );
+            } else {
+                showToast(
+                    'Registro Completado',
+                    'Lamentamos que no puedas asistir. Gracias por informarnos.',
+                    '✅'
+                );
+            }
+        }
+
+        // Cerrar modal al hacer clic fuera
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('show');
+            }
+        });
+		// FORMATEADOR CORTO FECHAS generar resta de dias faltamtes//////////////////
+function mostrarTiempoRestante(fechaLimite) {
+      const ahora = new Date();
+      const limite = new Date(fechaLimite);
+		  const pFaltanDias = document.getElementById('pFaltanDias');
+      
+      // Formateamos la fecha límite con Intl.DateTimeFormat
+      const formateador = new Intl.DateTimeFormat('es-ES', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+      const fechaFormateada = formateador.format(limite);
+      
+      // Mostramos la fecha formateada una sola vez
+      document.getElementById('fechaFormateada').textContent = `Hasta el ${fechaFormateada}`;
+      
+      // Calculamos la diferencia en milisegundos
+      const diferencia = limite - ahora;
+      
+      // Si ya pasó la fecha
+      if (diferencia <= 0) {
+        document.querySelector('.countdown').style.display = 'none';
+        pFaltanDias.innerHTML = '🎉 ¡La fecha ha llegado! 🎉';
+        pFaltanDias.className = 'finalizado';
+        return;
+      }
+      
+      // Convertimos a días, horas, minutos y segundos
+      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+      
+      // Actualizamos los elementos del DOM
+      document.getElementById('dias').textContent = dias.toString().padStart(2, '0');
+      document.getElementById('horas').textContent = horas.toString().padStart(2, '0');
+      document.getElementById('minutos').textContent = minutos.toString().padStart(2, '0');
+      document.getElementById('segundos').textContent = segundos.toString().padStart(2, '0');
+      
+      // Mensaje descriptivo
+      const mensaje = `Faltan ${dias} días, ${horas} horas, ${minutos} minutos y ${segundos} segundos`;
+	  pFaltanDias.textContent = '🍷🍹✨🍓🍒🍄';
+
+}
+//*********
+function makeSlug(name){
+  return name.trim().toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+}
+function cleanCI(ci){ return ci.replace(/[^\d]/g,''); }
+
+/* Validación dígito verificador (Uruguay) */
+function validarCI(ciInput){
+  const ci = cleanCI(ciInput);
+  if (!/^\d{7,8}$/.test(ci)) return false;
+  const body = ci.slice(0, -1).padStart(7, '0');
+  const dv = parseInt(ci.slice(-1),10);
+  const factors = [2,9,8,7,6,3,4];
+  let sum = 0;
+  for(let i=0;i<7;i++){
+    const n = parseInt(body[i],10);
+    sum += n * factors[i];
+  }
+  const resto = sum % 10;
+  const expected = resto === 0 ? 0 : 10 - resto;
+  return expected === dv;
+}
+ // --- Datos del evento (modificalos a gusto) ---
+  const anfitrion = "Andrés Arias";         // <--- pon tu nombre aquí si querés
+  const descripcion = "¡Ven a celebrar con nosotros! Música, cena y baile.";
+  const fechaHora = "10 de Enero · 20:00";
+  const ubicacionURL = "https://www.google.com/maps?q=-34.873350,-56.212522"; // ejemplo
+  // -----------------------------------------------
+  // poblar UI
+  <!-- document.getElementById('hostName').textContent = anfitrion; -->
+  <!-- document.getElementById('eventInfo').textContent = `${descripcion} · ${fechaHora}`; -->
+  <!-- document.getElementById('mapsBtn').href = ubicacionURL; -->
+  <!-- const publicPath = `${location.origin}/invitacion/${makeSlug(anfitrion)}`; -->
+  const publicPathNetlify = `https://`;
+  
+// compartir modal
+  const modal = document.getElementById('modal'), modalText = document.getElementById('modalText'), modalTitle = document.getElementById('modalTitle');
+  document.getElementById('shareBtn').addEventListener('click', ()=>{
+    modalTitle.textContent = 'Compartir invitación';
+    modalText.textContent = publicPathNetlify;
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+  });
+  document.getElementById('closeModal').addEventListener('click', ()=>{ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); });
+  document.getElementById('copyBtn').addEventListener('click', async ()=>{
+    try{ await navigator.clipboard.writeText(modalText.textContent); alert('URL copiada al portapapeles'); }
+    catch(e){ alert('No se pudo copiar: '+e.message) }
+  });
+//*******************************************************************
+   // Abrir Maps
+  window.openMaps = () => {
+    window.open("https://www.google.com/maps?q=-34.332696,-54.978521", "_blank");
+  }
+  
+  
+		
+		// Inicializar
+        document.addEventListener('DOMContentLoaded', () => {            
+		 // loadData();
+		 //cargo los dattos de prueba , arriba es desde BD
+		  actualizarEstadisticas();
+		  actualizarTabla();
+		  
+		 const fechaLimite = '2025-12-01 21:05:00';
+      
+      // Llamada inicial
+      mostrarTiempoRestante(fechaLimite);
+      
+      // Actualización cada segundo para incluir los segundos
+      setInterval(() => {
+        mostrarTiempoRestante(fechaLimite);
+      }, 1000);
+		  
+        });
+    </script>
+</body>
+</html>
