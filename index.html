@@ -596,7 +596,7 @@
     backdrop-filter: blur(4px); background:rgba(2,6,23,0.4); z-index:60;
   }
   .modal.open{display:flex;}
-  .modal .panel{background:var(--card); padding:1.25rem;border-radius:12px; max-width:520px; width:94%; box-shadow:0 20px 60px rgba(2,6,23,0.45);}
+  .modal .panel{background:var(--preppy-bg); padding:1.25rem;border-radius:12px; max-width:520px; width:94%; box-shadow:0 20px 60px rgba(2,6,23,0.45);}
   .tiny{ font-size:.86rem; color:var(--muted) }
     .countdown {
       display: grid;
@@ -604,6 +604,13 @@
       gap: .5rem;
       margin-bottom: 20px;
     }
+	.btnsCompartir{
+		display: flex;
+		gap: .5rem;
+		margin-top: .6rem;
+		align-items: center;
+		width: 100%;
+	}
 
     .time-box {
       background: linear-gradient(135deg, var(--textBlack) 0%, var(--textBlack) 100%);
@@ -693,7 +700,7 @@
     <div class="container">
 		<div class="card">
 			<img src="assets/pool.jpeg"" alt="Fotode Kari" loading="lazy" class="hero-img">
-			<h1>🎉 Invitación Especial</h1>
+			<h1>Invitación Especial</h1>
 			<p class="subtitle">Estás invitado a una joda especial. <br> Por favor confirma tu asistencia.</p>
 
 			<div class="controls">
@@ -822,7 +829,7 @@
 		  <div class="panel">
 			<h3 id="modalTitleCompartir">Compartir invitación</h3>
 			<p id="modalText" class="tiny">URL lista para copiar</p>
-			<div style="display:flex;gap:.5rem;margin-top:.6rem;">
+			<div class="btnsCompartir">
 			  <button id="copyBtn">Copiar</button>
 			  <button id="closeModal" class="linkbtn">Cerrar</button>
 			</div>
