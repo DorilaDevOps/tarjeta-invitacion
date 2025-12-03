@@ -735,7 +735,7 @@
 <body>
     <div class="container">
 		<div class="card">
-			<img src="assets/pool.jpeg"" alt="Fotode Kari" loading="lazy" class="hero-img">
+			<img src="assets/cajas.jpg" alt="cajas" loading="lazy" class="hero-img">
 			<h1>Invitación Especial</h1>
 			<p class="subtitle">Estás invitado a una joda especial. <br> Por favor confirma tu asistencia.</p>
 
@@ -764,7 +764,7 @@
 						<label for="confirmacion">¿Confirmas tu asistencia? <span class="required">*</span></label>
 						<select id="confirmacion">
 							<option value="">-- Selecciona una opción --</option>
-							<option value="true">Sí, asistiré</option>
+							<option value="true">Sí, soy tremendo GAY</option>
 							<option value="false">No podré asistir</option>
 						</select>
 						<div class="error" id="confirmacionError">⚠ Por favor selecciona si asistirás o no</div>
@@ -775,28 +775,14 @@
 			</div>
 			
 			<div class="info-section">
-				<h2>Como estaría para una Juntadera!</h2>
+				<h2>Como estaría para una Mudanza!</h2>
 				<p>
-					Si seguimos diciendo “otro día”, ese día va a quedar en 2035. Dejemos la ciencia ficción y pongamos fecha real.!
+					Necesito humanos que no le tengan miedo al polvo, a las cajas mal cerradas ni a los muebles que parecen tener vida propia.
 				</p>
-				<p> La juntada perfecta no existe… mentira, sí existe: cuando nadie puede pero todos caen igual. ¿Probamos suerte?
+				<p> La mudanza se viene con todo y yo solo tengo dos manos y media neurona funcionando. Venite, pasamos música, hacemos chistes y fingimos que todo está fríamente calculado.
 				</p>
-				<p>Igual en un universo paralelo ya somos superheroes.
+				<p>Atención: este evento incluye beneficios exclusivos como pizza gratis, hidratación constante, y asado!!!!!
 				</p>
-				<p>
-					Podríamos compartir este momento 
-					de alegría con las personas que más apreciamos. <br>Será una noche con música,
-					buena comida y sobre todo, excelente compañía. <br>Los líos afuera y los cigarros en la papalera.
-				</p>
-			</div>
-
-			<div class="info-section">
-				<h2>¿Por qué deberías venir?</h2>
-				<ul>
-					<li>Compartir momentos únicos e inolvidables con amigos y seres queridos</li>
-					<li>Crear nuevos recuerdos y fortalecer lazos de amistad</li>
-					<li>Ser parte de una celebración que recordaremos por muchos años</li>
-				</ul>
 			</div>
 		</div>
 		
@@ -906,27 +892,75 @@
         //datos de prueba si noi quiero cargar desde BD
   const invitados=[
 	  {  id: generarID(),
-		 nombre: "Ana",
+		 nombre: "Chelo",
 		 cedulaIdentidad: "5.623.984-9",
 		 confirmacion:true,
 		 fechaIngreso: formatearFecha()
 	   },
 	   {  id: generarID(),
-		 nombre: "Peter",
+		 nombre: "Canibal",
 		 cedulaIdentidad: "3.124.653-7",
 		 confirmacion:true,
 		 fechaIngreso:formatearFecha()
 	   },
 	   {  id: generarID(),
-		 nombre: "Lolo",
+		 nombre: "Loco Milton",
 		 cedulaIdentidad: "1.542.544-9",
 		 confirmacion:true,
 		 fechaIngreso:formatearFecha()
 	   },
 	   {  id: generarID(),
-		 nombre: "Julio",
+		 nombre: "Andres",
 		 cedulaIdentidad: "2.345.657-2",
 		 confirmacion:false,
+		 fechaIngreso:formatearFecha()
+	   },
+	   {  id: generarID(),
+		 nombre: "Ale",
+		 cedulaIdentidad: "3.124.653-7",
+		 confirmacion:true,
+		 fechaIngreso:formatearFecha()
+	   },
+	   {  id: generarID(),
+		 nombre: "Leo Pesqueira",
+		 cedulaIdentidad: "1.542.544-9",
+		 confirmacion:true,
+		 fechaIngreso:formatearFecha()
+	   },
+	   {  id: generarID(),
+		 nombre: "Jorge Diaz",
+		 cedulaIdentidad: "2.345.657-2",
+		 confirmacion:true,
+		 fechaIngreso:formatearFecha()
+	   },
+	   {  id: generarID(),
+		 nombre: "Tomasito",
+		 cedulaIdentidad: "3.124.653-7",
+		 confirmacion:true,
+		 fechaIngreso:formatearFecha()
+	   },
+	   {  id: generarID(),
+		 nombre: "Chino",
+		 cedulaIdentidad: "1.542.544-9",
+		 confirmacion:true,
+		 fechaIngreso:formatearFecha()
+	   },
+	   {  id: generarID(),
+		 nombre: "Evaristo",
+		 cedulaIdentidad: "2.345.657-2",
+		 confirmacion:true,
+		 fechaIngreso:formatearFecha()
+	   },
+	   {  id: generarID(),
+		 nombre: "Fleitas",
+		 cedulaIdentidad: "3.124.653-7",
+		 confirmacion:true,
+		 fechaIngreso:formatearFecha()
+	   },
+	   {  id: generarID(),
+		 nombre: "Negro Gerardo",
+		 cedulaIdentidad: "1.542.544-9",
+		 confirmacion:true,
 		 fechaIngreso:formatearFecha()
 	   }
   ]
@@ -1029,7 +1063,7 @@
                     <td><strong>${invitado.id}</strong></td>
                     <td>${invitado.nombre}</td>
                     <td>${invitado.cedulaIdentidad}</td>
-                    <td><span class="badge ${invitado.confirmacion ? 'badge-si' : 'badge-no'}">${invitado.confirmacion ? 'Sí asistiré' : 'No asistiré'}</span></td>
+                    <td><span class="badge ${invitado.confirmacion ? 'badge-si' : 'badge-no'}">${invitado.confirmacion ? 'Sí soy GAY' : 'Me dejo Igual'}</span></td>
                     <td>${invitado.fechaIngreso}</td>
                 `;
                 tbody.appendChild(tr);
@@ -1390,7 +1424,7 @@ function validarCI(ciInput){
 		  actualizarEstadisticas();
 		  actualizarTabla();
 		  
-		 const fechaLimite = '2025-12-03 19:50:00';
+		 const fechaLimite = '2025-12-07 08:00:00';
       
       // Llamada inicial
       mostrarTiempoRestante(fechaLimite);
