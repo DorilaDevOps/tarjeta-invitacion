@@ -765,7 +765,7 @@
 						<select id="confirmacion">
 							<option value="">-- Selecciona una opción --</option>
 							<option value="true">Sí, soy tremendo GAY</option>
-							<option value="false">No podré asistir</option>
+							<option value="false">Me dejo igual!"</option>
 						</select>
 						<div class="error" id="confirmacionError">⚠ Por favor selecciona si asistirás o no</div>
 					</div>
@@ -1063,7 +1063,7 @@
                     <td><strong>${invitado.id}</strong></td>
                     <td>${invitado.nombre}</td>
                     <td>${invitado.cedulaIdentidad}</td>
-                    <td><span class="badge ${invitado.confirmacion ? 'badge-si' : 'badge-no'}">${invitado.confirmacion ? 'Sí soy GAY' : 'Me dejo Igual'}</span></td>
+                    <td><span class="badge ${invitado.confirmacion ? 'badge-si' : 'badge-no'}">${invitado.confirmacion ? 'Sí, asistiré' : 'No voy, columna desviada.'}</span></td>
                     <td>${invitado.fechaIngreso}</td>
                 `;
                 tbody.appendChild(tr);
@@ -1412,7 +1412,7 @@ function validarCI(ciInput){
 //*******************************************************************
    // Abrir Maps
   window.openMaps = () => {
-    window.open("https://www.google.com/maps?q=-34.332696,-54.978521", "_blank");
+    window.open("https://www.google.com/maps?q=-34.783494,-55.864592", "_blank");
   }
   
   
