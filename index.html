@@ -21,16 +21,26 @@
 	
     <style>
 	:root {
+		--amma:#e7996352;
+		--rosa:#e89191bd;
       --preppy-bg: #f5efe7;
-      --preppy-primary: #89cff0;
-      --preppy-secondary: #ffc8dd;
-      --preppy-text: #333;
+	  --preppy_white:#f5efe7;
+      --bg_preppy-si: #f0ffa5;
+	  --color_oscuro:#403737;
+	  --bg_violet_transp:#e479ef8f;
+	  --bg_rosa_transp:#db859178;
+	  --bg_preppy_grey:#020814b3;
+      --preppy-primary: #aaac6d;
+      --preppy-secondary: orange;
+      --preppy-text: #393737;
+	  --color_white:#ffffff;
       --radius: 16px;
       --transition: 0.3s ease;
-	  --textBlue:#6f8e78;
-    --textBlack: #c8ccd3;
-	  --rojito:#f5576c;
-	  --otio:#dc3545;
+	  --text_brown:#7c6e52;
+		--textBlack: #c8ccd3;
+	  --rojito:#f5576cb3;
+	  
+	  --otio_azul:#3e71e8;
     }
         * {
             margin: 0;
@@ -39,20 +49,20 @@
         }
 
         body {
-            background: linear-gradient(135deg, var(--textBlue) 0%, var(--rojito) 100%);
+            background: linear-gradient(135deg, var(--text_brown) 0%, var(--rojito) 100%);
              font-family: "Poppins", sans-serif;
 			 font-size:1em;
-      background: var(--preppy-bg);
-      color: var(--preppy-text);
-      justify-content: center;
-      padding: .2rem;
+			  background: var(--color_white);
+			  color: var(--preppy-text);
+			  justify-content: center;
+			  padding: .2rem;
         }
 
 		
 	.container{
 		display: flex;
 		flex-direction:column;
-		gap: .5rem;
+		gap: .7rem;
 		justify-content: center;
 		max-width: 1220px;
 		margin: 0 auto;
@@ -61,7 +71,7 @@
     .card {
 		display:flex;
 		flex-direction:column;
-		gap:1rem;	
+		gap:.5rem;	
 		flex: 1 0 40%;
       width: 100%;
       border-radius: var(--radius);
@@ -87,10 +97,11 @@
     }	
 
         h1 {
-            color: white;
+            color: var(--preppy-text);
             text-align: center;
-            margin-bottom: 10px;
-            font-size: 1.5em;			
+            margin-bottom: .5rem;
+            font-size: 1.5em;	
+			letter-spacing: .2em;
 			-webkit-text-stroke-width: 0.5px;
 			-webkit-text-stroke-color: grey;
 			text-transform: uppercase;
@@ -101,9 +112,10 @@
         }
 
         .subtitle {
-            color: var(--textBlue);
+            color: var(--text_brown);
             text-align: center;
             font-size: 1.1em;
+			line-height: 1.5;
         }
 
         /* Modal personalizado */
@@ -143,7 +155,7 @@
         }
 
         .modal-content {
-            background: white;
+            background: var(--color_white);
             padding: 30px;
             border-radius: 20px;
             max-width: 500px;
@@ -172,14 +184,14 @@
 
         .modal-title {
             font-size: 1.8em;
-            color: #1e3c72;
+            color: var(--rojito);
             margin-bottom: 15px;
             font-weight: 600;
         }
 
         .modal-message {
             font-size: 1.1em;
-            color: #555;
+            color: var(--preppy-text);
             margin-bottom: 25px;
             line-height: 1.6;
         }
@@ -202,8 +214,8 @@
         }
 
         .modal-btn-primary {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
+            <!-- background: linear-gradient(135deg, #1e3c72 0%, var(--preppy-text) 100%); -->
+            color: var(--color_white);
         }
 
         .modal-btn-primary:hover {
@@ -212,18 +224,18 @@
         }
 
         .modal-btn-secondary {
-            background: #6c757d;
-            color: white;
+            background: var(--bg_violet_transp);
+            color: var(--color_white);
         }
 
         .modal-btn-secondary:hover {
-            background: #5a6268;
+            background: var(--bg_preppy_grey);
             transform: translateY(-2px);
         }
 
         .modal-btn-success {
             background: #28a745;
-            color: white;
+            color: var(--color_white);
         }
 
         .modal-btn-success:hover {
@@ -236,7 +248,7 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            background: white;
+            background: var(--color_white);
             padding: 20px 25px;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
@@ -284,7 +296,7 @@
 
         .info-section {		
 			font-family: "Playfair Display", serif;
-            background: white;
+            background: var(--color_white);
             padding: 1.5rem;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
@@ -295,6 +307,8 @@
             color: var(--preppy-primary);
             margin-bottom: .8rem;
             padding-bottom: .5rem;
+			font-size: 1.3em;
+			text-align: center;
         }
 
         .info-section p {
@@ -326,7 +340,7 @@
         }
 
         .form-container {
-            background: white;
+            background:var(--color_white);
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
@@ -334,21 +348,21 @@
         }
 
         .form-container h2 {
-            color: #1e3c72;
+            color: var(--preppy-primary);
             margin-bottom: 25px;
             font-size: 1.8em;
             text-align: center;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 1rem;
         }
 
         label {
             display: block;
             margin-bottom: 8px;
-            color: #333;
-            font-weight: 600;
+            color: var(--preppy-text);
+            font-weight: 500;
         }
 
         label .required {
@@ -357,21 +371,21 @@
 
         input, select {
             width: 100%;
-            padding: 14px;
-            border: 2px solid #e0e0e0;
+            padding: .7rem;
+            border: 1px solid var(--textBlack);
             border-radius: 10px;
-            font-size: 16px;
+            font-size: 1em;
             transition: all 0.3s;
         }
 
         input:focus, select:focus {
             outline: none;
-            border-color: #2a5298;
+            border-color: var(--otio_azul);
             box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.1);
         }
 
         input.error-field, select.error-field {
-            border-color: #dc3545;
+            border-color: var(--rojito);
             animation: shake 0.5s;
         }
 
@@ -381,16 +395,16 @@
             75% { transform: translateX(10px); }
         }
 
-        .error {
-            color: #dc3545;
-            font-size: 14px;
-            margin-top: 8px;
+        .error, .msg_error {
+            color: var(--rojito);
+            font-size: .8em;
+            margin-top: 1px;
             display: none;
             font-weight: 500;
             padding: 8px 12px;
-            background: #ffe6e6;
+            background: var(--textBlack);
             border-radius: 5px;
-            border-left: 3px solid #dc3545;
+            border-left: 1px solid var(--rojito);
         }
 
         .error.show {
@@ -402,18 +416,21 @@
             from {
                 opacity: 0;
                 transform: translateY(-10px);
+				background-color:yellow;
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
+		
+		.msg_error.show{background-color:var(--preppy-bg); display:block;}
 
         button {
             width: 100%;
             padding: .6rem .85rem;
-            background: linear-gradient(135deg, var(--textBlue) 0%, var(--textBlack) 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--text_brown) 0%, var(--textBlack) 100%);
+            color: var(--color_white);
             border: none;
             border-radius: 10px;
             font-size: 18px;
@@ -425,7 +442,7 @@
         button:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(42, 82, 152, 0.4);
-			background: linear-gradient(135deg, #1f5724bd 0%, #020814b3 100%);
+			background: linear-gradient(135deg, var(--amma) 0%, var(--rosa) 100%);
         }
 
         button:active {
@@ -439,7 +456,7 @@
 		border:0;padding:.6rem .85rem;
 		border-radius:10px;
 		font-weight:600;    
-		color:white; 
+		color:var(--color_white); 
 		cursor:pointer;
 		box-shadow:0 8px 20px rgba(79,70,229,0.12);
 		transition:transform .12s, 
@@ -454,16 +471,16 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
-            margin-bottom: 30px;
+            margin: 1rem 1.5rem;
         }
 
         .stat-card {
-            background: white;
-            padding: 25px;
+            background:var(--color_white);
+            padding:1rem;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             text-align: center;
-            border-top: 4px solid #2a5298;
+            border-top: 2px solid var(--preppy-primary);
             transition: transform 0.3s;
         }
 
@@ -472,16 +489,17 @@
         }
 
         .stat-card h3 {
-            color: #1e3c72;
-            margin-bottom: 15px;
+            color: var(--text_brown);
+            margin-bottom: 10px;
         }
 
         .stat-number {
-            font-size: 1.4em;
+            font-size: 1.2em;
             font-weight: bold;
-            color: #2a5298;
+            color: var(--text_brown);
             animation: countUp 0.5s ease;
         }
+		.dataInvitados{display:flex;justify-content: space-around;}
 
         @keyframes countUp {
             from { 
@@ -495,34 +513,36 @@
         }
 
         .confirmed-list {
-            margin-top: 15px;
+            margin-top: 5px;
             text-align: left;
             max-height: 200px;
             overflow-y: auto;
         }
 
         .confirmed-name {
-            background: #f0f4ff;
             padding: 10px 15px;
             margin: 8px 0;
             border-radius: 8px;
             font-size: 14px;
-            border-left: 3px solid #2a5298;
+			border: 2px solid var(--bg_preppy-si);
+			border-left: 2px solid var(--otio_azul);
             animation: slideIn 0.3s ease;
         }
 
         .table-container {
-            background: white;
+            background: var(--color_white);
             padding: 30px;
             border-radius: 15px;
+			border-top: 2px solid var(--preppy-primary);
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             overflow-x: auto;
         }
 
         .table-container h2 {
-            color: #1e3c72;
+            color: var(--preppy-primary);
             margin-bottom: 20px;
-            font-size: 1.8em;
+            font-size: 1.3em;
+			text-align: center;
         }
 
         table {
@@ -538,8 +558,8 @@
         }
 
         th {
-            background: #020814b3;
-            color: white;
+            background: var(--bg_preppy_grey);
+            color: var(--color_white);
             font-weight: 600;
             position: sticky;
             top: 0;
@@ -562,13 +582,14 @@
         }
 
         .badge-si {
-            background: #28a745;
-            color: white;
+            background: var(--bg_preppy-si);
+            color: var(--color_oscuro);
         }
 
         .badge-no {
-            background: #dc3545;
-            color: white;
+            background: transparent;
+            color: var(--rojito);
+			border: 1px solid var(--rojito);
         }
 
         .empty-state {
@@ -578,7 +599,7 @@
         }
 		  
     .containerLimite, .dash{
-      background: white;
+      background: var(--color_white);
       padding: .5rem;
       border-radius: 20px;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -627,7 +648,8 @@
 	}
 
     .time-box {
-      background: linear-gradient(135deg, var(--textBlack) 0%, var(--textBlack) 100%);
+      background: transparent);
+      <!-- background: linear-gradient(135deg, var(--textBlack) 0%, var(--textBlack) 100%); -->
       padding: .5rem;
       border-radius: 15px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -636,14 +658,14 @@
     .time-number {
       font-size: 1.3em;
       font-weight: bold;
-      color: white;
+      color: var(--bg_violet_transp);
       display: block;
       margin-bottom: 5px;
     }
 
     .time-label {
-      font-size: 1em;
-      color: rgba(255, 255, 255, 0.9);
+      font-size: .7em;
+      color: var(--bg_violet_transp);
       text-transform: uppercase;
       font-weight: 600;
     }
@@ -652,8 +674,8 @@
 
 
     .finalizado {
-      background: linear-gradient(135deg, #f093fb 0%, var(--rojito) 100%);
-      color: white;
+      background: linear-gradient(135deg, var(--bg_violet_transp) 10%, var(--bg_rosa_transp) 100%);
+      color: var(--color_white);
       padding: 1.5rem;
       border-radius: 15px;
       font-size: 1.3em;
@@ -735,6 +757,7 @@
 						<label for="ci">Cédula de Identidad <span class="required">*</span></label>
 						<input type="text" id="ci" placeholder="Ingresa tu cédula de identidad">
 						<div class="error" id="ciError">⚠ Por favor ingresa tu cédula de identidad</div>
+						<small class="msg_error"></small>
 					</div>
 
 					<div class="form-group">
@@ -752,7 +775,7 @@
 			</div>
 			
 			<div class="info-section">
-				<h2>🍃 Como estaría para una Juntadera!</h2>
+				<h2>Como estaría para una Juntadera!</h2>
 				<p>
 					Si seguimos diciendo “otro día”, ese día va a quedar en 2035. Dejemos la ciencia ficción y pongamos fecha real.!
 				</p>
@@ -768,7 +791,7 @@
 			</div>
 
 			<div class="info-section">
-				<h2>✨ ¿Por qué deberías venir?</h2>
+				<h2>¿Por qué deberías venir?</h2>
 				<ul>
 					<li>Compartir momentos únicos e inolvidables con amigos y seres queridos</li>
 					<li>Crear nuevos recuerdos y fortalecer lazos de amistad</li>
@@ -807,12 +830,16 @@
 				
 			<div class="stats-container">
 				<div class="stat-card">
-					<h3>📊 Total de Invitados</h3>
-					<div class="stat-number" id="totalInvitados">0</div>
+					<div class="dataInvitados">
+						<h3>Total de Invitados</h3>
+						<div class="stat-number" id="totalInvitados">0</div>
+					</div>
 				</div>
 				<div class="stat-card">
-					<h3>✅ Confirmados</h3>
-					<div class="stat-number" id="totalConfirmados">0</div>
+					<div class="dataInvitados">
+						<h3>Confirmados</h3>
+						<div class="stat-number" id="totalConfirmados">0</div>
+					</div>
 					<div class="confirmed-list" id="confirmedList"></div>
 				</div>
 			</div>
@@ -1009,18 +1036,98 @@
             });
         }
 
+		function removerClasesError(claseError, claseShow){ 
+			if(claseError.classList.contains(claseShow)){
+				claseError.classList.remove(claseShow);
+			}
+		}
+		
+       
+		function tieneOchoDigitos(inputID) {
+						  
+		 const smallError = document.querySelector('.msg_error'); 
+		  //const smallError = inputID.nextElementSibling; // <small> debajo del inputID
+
+		  // limpiar mensajes previos
+		  smallError.classList.remove('show');
+		  smallError.textContent = "";
+		  inputID.classList.remove("error");
+
+		  // eliminar todo lo que no sea número
+		  let soloNumeros = inputID.value.replace(/\D/g, "");
+
+		  // actualizar el inputID (opcional si querés que se refleje)
+		  inputID.value = soloNumeros;
+
+		  // validar longitud
+		  if (soloNumeros.length !== 8) {
+				smallError.classList.add('show');
+				smallError.textContent = "La cédula debe tener exactamente 8 números.";
+				
+			return false;
+		  }
+		  
+          cedulaFormateada =  formatearCedula(soloNumeros);
+		  return true;
+		}		
+		
+		function estaVacio(input) {
+		  return input.value.trim() === "";
+		}
+		
+		 let cedulaFormateada = "x.xxx.xxx-x";		
+			
+		function formatearCedula(cedula) {
+			// Cedula debe venir como un string de 8 números exactos
+			if (!/^\d{8}$/.test(cedula)) return null;
+
+			const p1 = cedula.substring(0, 1);      // 1er número
+			const p2 = cedula.substring(1, 4);      // 3 números
+			const p3 = cedula.substring(4, 7);      // 3 números
+			const p4 = cedula.substring(7, 8);      // último número
+
+			return `${p1}.${p2}.${p3}-${p4}`;
+		}
+		
         document.getElementById('asistenciaForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             // Limpiar errores previos
-            document.querySelectorAll('.error').forEach(error => error.classList.remove('show'));
+            document.querySelectorAll('.error').forEach((elem, indice) => {
+				removerClasesError(elem, 'show');
+				
+			  });
+			  
+			  //TERNARIO1
+			  ///ternario2
+			  /*document.querySelectorAll('.error').forEach((elem, indice) => { 
+				if(elem.classList.contains('show')){ 
+					elem.classList.remove('show');
+					console.log(`Se quitó 'show' del elemento .error -`, indice); 
+				 } 
+			  }); */
+			  
+			  /*console.log(  
+					elem.classList.contains('show')
+				     ? "El .error tiene 'show'"+indice 
+				     : "El .error NO tiene 'show'"+indice,elem 
+				   ) */
+				//elem.classList.contains('show') 
+					//? console.log("show") 
+					//: console.log('El elemento NO tiene la clase "show".');
+					
+			/*removerClasesError(error,'show')}); 
+            document.querySelectorAll('.error').forEach(error => error.classList.remove('show'));*/
+			
             document.querySelectorAll('input, select').forEach(field => field.classList.remove('error-field'));
             
-            const nombre = document.getElementById('nombre').value.trim();
-            const ci = document.getElementById('ci').value.trim();
+            const nombre = document.getElementById('nombre').value.trim(); //si es vacio
+			const inputCedula = document.getElementById('ci');
+			const errorCedula  = document.getElementById('ciError');
             const confirmacionValue = document.getElementById('confirmacion').value;
-            
+			
             let esValido = true;
+            let esNumberOk = true;
             
             // Validar nombre (requerido)
             if (!nombre) {
@@ -1030,20 +1137,32 @@
             }
             
             // Validar cédula (requerido)
-            if (!ci) {
-                document.getElementById('ciError').classList.add('show');
-                document.getElementById('ci').classList.add('error-field');
+            if (estaVacio(inputCedula)) {
+                errorCedula.classList.add('show');
+                errorCedula.textContent = "Este campo no puede estar vacío."; 
+                inputCedula.classList.add('error-field');
                 esValido = false;
-            }
-            
+			}
+			
+			if(!tieneOchoDigitos(inputCedula)) {
+				/*errorCedula.classList.add('show');
+				errorCedula.textContent = "Solo 8 Numeros"; 
+				inputCedula.classList.add('error-field');*/
+				
+				//esValido = false;
+				esNumberOk = false;
+			}			
+				
+			            
             // Validar confirmación (requerido)
             if (!confirmacionValue) {
                 document.getElementById('confirmacionError').classList.add('show');
                 document.getElementById('confirmacion').classList.add('error-field');
                 esValido = false;
             }
-            
-            if (!esValido) {
+					
+			
+			 if (!esValido) {
                 showModal(
                     'Campos Incompletos',
                     'Por favor completa todos los campos requeridos antes de continuar.',
@@ -1052,6 +1171,18 @@
                 );
                 return;
             }
+			if(!esNumberOk){
+				showModal(
+                    'Campos Incompletos',
+                    'Zapallera! fijate cantidad de Numeros en la Cédula.',
+                    '🍄',
+                    [{ text: 'VOY', class: 'modal-btn-primary' }]
+                );
+                return;
+			}
+            
+			
+            
             
             const confirmacion = confirmacionValue === 'true';
             
@@ -1069,22 +1200,25 @@
                         { 
                             text: 'Sí, no podré asistir', 
                             class: 'modal-btn-primary',
-                            callback: () => registrarInvitado(nombre, ci, confirmacion)
+                            callback: () => registrarInvitado(nombre, cedulaFormateada, confirmacion)
                         }
                     ]
                 );
                 return;
-            }
-            
-            registrarInvitado(nombre, ci, confirmacion);
+            }	
+			
+			console.log("Formulario válido. Procesando..."+Number.isNaN(Number(cedulaFormateada)));
+			 
+            registrarInvitado(nombre, cedulaFormateada, confirmacion);
+			
         });
 
-        function registrarInvitado(nombre, ci, confirmacion) {
+        function registrarInvitado(nombre, ciValue, confirmacion) {
             // Crear invitado con todos los datos requeridos
             const invitado = {
                 id: generarID(),
                 nombre: nombre,
-                cedulaIdentidad: ci,
+                cedulaIdentidad: ciValue,
                 confirmacion: confirmacion,
                 fechaIngreso: formatearFecha()
             };
@@ -1133,53 +1267,53 @@
             }
         });
 		// FORMATEADOR CORTO FECHAS generar resta de dias faltamtes//////////////////
-function mostrarTiempoRestante(fechaLimite) {
-      const ahora = new Date();
-      const limite = new Date(fechaLimite);
-		  const pFaltanDias = document.getElementById('pFaltanDias');
-      
-      // Formateamos la fecha límite con Intl.DateTimeFormat
-      const formateador = new Intl.DateTimeFormat('es-ES', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
-      });
-      const fechaFormateada = formateador.format(limite);
-      
-      // Mostramos la fecha formateada una sola vez
-      document.getElementById('fechaFormateada').textContent = `Hasta el ${fechaFormateada}`;
-      
-      // Calculamos la diferencia en milisegundos
-      const diferencia = limite - ahora;
-      
-      // Si ya pasó la fecha
-      if (diferencia <= 0) {
-        document.querySelector('.countdown').style.display = 'none';
-        pFaltanDias.innerHTML = '🎉 ¡La fecha ha llegado! 🎉';
-        pFaltanDias.className = 'finalizado';
-        return;
-      }
-      
-      // Convertimos a días, horas, minutos y segundos
-      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-      const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-      const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
-      
-      // Actualizamos los elementos del DOM
-      document.getElementById('dias').textContent = dias.toString().padStart(2, '0');
-      document.getElementById('horas').textContent = horas.toString().padStart(2, '0');
-      document.getElementById('minutos').textContent = minutos.toString().padStart(2, '0');
-      document.getElementById('segundos').textContent = segundos.toString().padStart(2, '0');
-      
-      // Mensaje descriptivo
-      const mensaje = `Faltan ${dias} días, ${horas} horas, ${minutos} minutos y ${segundos} segundos`;
-	  pFaltanDias.textContent = '🍷🍹✨🍓🍒🍄';
+		function mostrarTiempoRestante(fechaLimite) {
+		  const ahora = new Date();
+		  const limite = new Date(fechaLimite);
+			  const pFaltanDias = document.getElementById('pFaltanDias');
+		  
+		  // Formateamos la fecha límite con Intl.DateTimeFormat
+		  const formateador = new Intl.DateTimeFormat('es-ES', {
+			day: 'numeric',
+			month: 'long',
+			year: 'numeric',
+			hour: '2-digit',
+			minute: '2-digit'
+		  });
+		  const fechaFormateada = formateador.format(limite);
+		  
+		  // Mostramos la fecha formateada una sola vez
+		  document.getElementById('fechaFormateada').textContent = `Hasta el ${fechaFormateada}`;
+		  
+		  // Calculamos la diferencia en milisegundos
+		  const diferencia = limite - ahora;
+		  
+		  // Si ya pasó la fecha
+		  if (diferencia <= 0) {
+			document.querySelector('.countdown').style.display = 'none';
+			pFaltanDias.innerHTML = '🎉 ¡La fecha ha llegado! 🎉';
+			pFaltanDias.className = 'finalizado';
+			return;
+		  }
+		  
+		  // Convertimos a días, horas, minutos y segundos
+		  const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+		  const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		  const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+		  const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+		  
+		  // Actualizamos los elementos del DOM
+		  document.getElementById('dias').textContent = dias.toString().padStart(2, '0');
+		  document.getElementById('horas').textContent = horas.toString().padStart(2, '0');
+		  document.getElementById('minutos').textContent = minutos.toString().padStart(2, '0');
+		  document.getElementById('segundos').textContent = segundos.toString().padStart(2, '0');
+		  
+		  // Mensaje descriptivo
+		  const mensaje = `Faltan ${dias} días, ${horas} horas, ${minutos} minutos y ${segundos} segundos`;
+		  pFaltanDias.textContent = '🍷🍹✨🍓🍒🍄';
 
-}
-//*********
+	}
+	//*********
 function makeSlug(name){
   return name.trim().toLowerCase()
     .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
@@ -1256,7 +1390,7 @@ function validarCI(ciInput){
 		  actualizarEstadisticas();
 		  actualizarTabla();
 		  
-		 const fechaLimite = '2025-12-02 08:50:00';
+		 const fechaLimite = '2025-12-03 19:50:00';
       
       // Llamada inicial
       mostrarTiempoRestante(fechaLimite);
