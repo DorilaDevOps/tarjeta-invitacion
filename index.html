@@ -91,10 +91,22 @@
 
     .hero-img {
       width: 100%;
-      height: 300px;
+      height: 150px;
       object-fit: cover;
       display: block;
     }	
+	.img_amigos{ width: 50%;}
+	
+	audio {
+	  width: 300px; /* Ajusta el ancho */
+	  margin: 5px;
+	}
+	.mi-reproductor-audio {
+		display:flex;
+		align-items: center;
+	  border: 1px solid var(--otio_azul);
+	  border-radius: 5px;
+	}
 
         h1 {
             color: var(--preppy-text);
@@ -499,7 +511,10 @@
             color: var(--text_brown);
             animation: countUp 0.5s ease;
         }
-		.dataInvitados{display:flex;justify-content: space-around;}
+		.dataInvitados{
+			display:flex;
+			justify-content: space-around;
+		}
 
         @keyframes countUp {
             from { 
@@ -512,26 +527,29 @@
             }
         }
 
-        .confirmed-list {
+        .confirmedList {
             margin-top: 5px;
             text-align: left;
             max-height: 200px;
             overflow-y: auto;
+			animation: slideIn 0.3s ease;
         }
-
-        .confirmed-name {
-            padding: 10px 15px;
+		.container_invitados{
+			display:flex;
+			gap: 1rem;
+			justify-content: space-around;
+			background-color:var(--bg_preppy-si);
+			border-bottom: 2px solid var(--otio_azul);
+		}
+        .confirmed_name, .div_status {
+            padding: 10px;
             margin: 8px 0;
-            border-radius: 8px;
-            font-size: 14px;
-			border: 2px solid var(--bg_preppy-si);
-			border-left: 2px solid var(--otio_azul);
-            animation: slideIn 0.3s ease;
         }
+		
 
         .table-container {
             background: var(--color_white);
-            padding: 30px;
+            padding: 1rem;
             border-radius: 15px;
 			border-top: 2px solid var(--preppy-primary);
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
@@ -540,8 +558,8 @@
 
         .table-container h2 {
             color: var(--preppy-primary);
-            margin-bottom: 20px;
-            font-size: 1.3em;
+            margin-bottom: 10px;
+            font-size: 1em;
 			text-align: center;
         }
 
@@ -737,57 +755,17 @@
 		<div class="card">
 			<img src="assets/cajas.jpg" alt="cajas" loading="lazy" class="hero-img">
 			<h1>Invitación Especial</h1>
-			<p class="subtitle">Estás invitado a una joda especial. <br> Por favor confirma tu asistencia.</p>
+			<p class="subtitle">Estás invitado a una joda especial. <br> Y para no perdernos les mando ubicación.</p>
 
 			<div class="controls">
-				<button class="btn" onclick="openMaps()">Ver ubicación </button>
-			  <button id="shareBtn" type="button">Compartir URL</button>
+				<button class="btn" onclick="openMaps()">Llegada </button>
+				<button class="btn">
+				<a id="mapsBtn" class="linkbtn" target="_blank" rel="noopener" href="https://www.google.com/maps?q=-34.887968,-56.188479">Salida</a>
+				</button>
+			  <button id="shareBtn" type="button">Compartir app</button>
 			</div>
 			
-			<div class="form-container">
-				<h2>Confirma tu Asistencia</h2>
-				<form id="asistenciaForm">
-					<div class="form-group">
-						<label for="nombre">Nombre Completo <span class="required">*</span></label>
-						<input type="text" id="nombre" placeholder="Ingresa tu nombre completo">
-						<div class="error" id="nombreError">⚠ Por favor ingresa tu nombre completo</div>
-					</div>
-
-					<div class="form-group">
-						<label for="ci">Cédula de Identidad <span class="required">*</span></label>
-						<input type="text" id="ci" placeholder="Ingresa tu cédula de identidad">
-						<div class="error" id="ciError">⚠ Por favor ingresa tu cédula de identidad</div>
-						<small class="msg_error"></small>
-					</div>
-
-					<div class="form-group">
-						<label for="confirmacion">¿Confirmas tu asistencia? <span class="required">*</span></label>
-						<select id="confirmacion">
-							<option value="">-- Selecciona una opción --</option>
-							<option value="true">Sí, soy tremendo GAY</option>
-							<option value="false">Me dejo igual!"</option>
-						</select>
-						<div class="error" id="confirmacionError">⚠ Por favor selecciona si asistirás o no</div>
-					</div>
-
-					<button type="submit">Confirmar Asistencia</button>
-				</form>
-			</div>
 			
-			<div class="info-section">
-				<h2>Como estaría para una Mudanza!</h2>
-				<p>
-					Necesito humanos que no le tengan miedo al polvo, a las cajas mal cerradas ni a los muebles que parecen tener vida propia.
-				</p>
-				<p> La mudanza se viene con todo y yo solo tengo dos manos y media neurona funcionando. Venite, pasamos música, hacemos chistes y fingimos que todo está fríamente calculado.
-				</p>
-				<p>Atención: este evento incluye beneficios exclusivos como pizza gratis, hidratación constante, y asado!!!!!
-				</p>
-			</div>
-		</div>
-		
-		<div class="dash">
-		  
 			  <div class="containerLimite">
 					<h2>🎄 Cuenta Regresiva 🎄</h2>
 					 <p class="fecha-limite" id="fechaFormateada"></p>
@@ -814,11 +792,59 @@
 				  <p id="pFaltanDias">---</p>
 				</div>
 				
+			<div class="info-section">
+				<h2>Como estaría para una Mudanza!</h2>
+				<p> 🎁 La mudanza se viene con todo. </p>
+				<p> ⌚ Venite temprano así me ayudan a poner todo en las cajas. </p>
+				<p> 📻 Pasamos música, hacemos chistes y nos rozamos a cada rato.</p>
+				<p> 🧉 Atención: este evento incluye beneficios exclusivos como Viagra gratis, Nix-Cola constante,💊  Diclofenac y fideos a las brazas!!!!!</p>
+				<p> 🩲 Por suerte no hay mujeres !!!</p>
+			</div>
+		</div>
+		
+		<div class="dash">
+		  
+			<!-- <div class="form-container"> -->
+				<!-- <h2>Confirma tu Asistencia</h2> -->
+				<!-- <form id="asistenciaForm"> -->
+					<!-- <div class="form-group"> -->
+						<!-- <label for="nombre">Nombre Completo <span class="required">*</span></label> -->
+						<!-- <input type="text" id="nombre" placeholder="Ingresa tu nombre completo"> -->
+						<!-- <div class="error" id="nombreError">⚠ Por favor ingresa tu nombre completo</div> -->
+					<!-- </div> -->
+
+					<!-- <div class="form-group"> -->
+						<!-- <label for="ci">Cédula de Identidad <span class="required">*</span></label> -->
+						<!-- <input type="text" id="ci" placeholder="Ingresa tu cédula de identidad"> -->
+						<!-- <div class="error" id="ciError">⚠ Por favor ingresa tu cédula de identidad</div> -->
+						<!-- <small class="msg_error"></small> -->
+					<!-- </div> -->
+
+					<!-- <div class="form-group"> -->
+						<!-- <label for="confirmacion">¿Confirmas tu asistencia? <span class="required">*</span></label> -->
+						<!-- <select id="confirmacion"> -->
+							<!-- <option value="">-- Selecciona una opción --</option> -->
+							<!-- <option value="true">Sí, soy tremendo GAY</option> -->
+							<!-- <option value="false">Me dejo igual!"</option> -->
+						<!-- </select> -->
+						<!-- <div class="error" id="confirmacionError">⚠ Por favor selecciona si asistirás o no</div> -->
+					<!-- </div> -->
+
+					<!-- <button type="submit">Confirmar Asistencia</button> -->
+				<!-- </form> -->
+			<!-- </div> -->
+			
 			<div class="stats-container">
 				<div class="stat-card">
 					<div class="dataInvitados">
-						<h3>Total de Invitados</h3>
-						<div class="stat-number" id="totalInvitados">0</div>
+						<div>
+							<h3>Total de Invitados</h3>
+							<div class="stat-number" id="totalInvitados">0</div>
+						</div>
+						<div>
+							<h3>No van</h3>
+							<div class="stat-number" id="noVan">0</div>
+						</div>
 					</div>
 				</div>
 				<div class="stat-card">
@@ -826,29 +852,37 @@
 						<h3>Confirmados</h3>
 						<div class="stat-number" id="totalConfirmados">0</div>
 					</div>
-					<div class="confirmed-list" id="confirmedList"></div>
+					<div class="confirmedList" id="confirmedList"></div>
 				</div>
 			</div>
 
 			<div class="table-container">
-				<h2>Lista de Invitados Registrados</h2>
-				<table id="invitadosTable">
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Nombre</th>
-							<th>Cédula</th>
-							<th>Confirmación</th>
-							<th>Fecha de Registro</th>
-						</tr>
-					</thead>
-					<tbody id="invitadosBody">
-						<tr>
-							<td colspan="5" class="empty-state">No hay invitados registrados aún</td>
-						</tr>
-					</tbody>
-				</table>
+				<h2>FOTICOS</h2>
+				<div style="display:flex";>
+				<img src="assets/todos1.jpeg" alt="cajas" class="img_amigos" loading="lazy" class="hero-img">
+				<img src="assets/todos2.jpeg" alt="cajas" class="img_amigos" loading="lazy" class="hero-img">
+				</div>
 			</div>
+			<div class="mi-reproductor-audio">
+				<audio controls>
+				  <source src="assets/saludo araca la cana 1937.mp3" type="audio/mpeg">
+				  <source src="assets/saludo araca la cana 1937.mp3" type="audio/ogg">
+				  Tu navegador no soporta el audio.
+				</audio>
+				<audio controls>
+				  <source src="assets/auyentando el miedo -zero.mp3" type="audio/mpeg">
+				  Tu navegador no soporta el audio.
+				</audio>
+				<audio controls>
+				  <source src="assets/Dr Alban - No Coke (Official HD).mp3" type="audio/mpeg">
+				  Tu navegador no soporta el audio.
+				</audio>
+				<div>
+					<button id="boton-reproducir">▶️</button>
+					<audio id="mi-audio" src="assets/APIECEOFMINE.mp3"></audio>
+				</div>
+			</div>
+
 		</div>
 	
 		<!-- modal para compartir -->
@@ -934,6 +968,12 @@
 		 fechaIngreso:formatearFecha()
 	   },
 	   {  id: generarID(),
+		 nombre: "Danilo",
+		 cedulaIdentidad: "5.765.657-3",
+		 confirmacion:false,
+		 fechaIngreso:formatearFecha()
+	   },
+	   {  id: generarID(),
 		 nombre: "Tomasito",
 		 cedulaIdentidad: "3.124.653-7",
 		 confirmacion:true,
@@ -960,7 +1000,7 @@
 	   {  id: generarID(),
 		 nombre: "Negro Gerardo",
 		 cedulaIdentidad: "1.542.544-9",
-		 confirmacion:true,
+		 confirmacion:false,
 		 fechaIngreso:formatearFecha()
 	   }
   ]
@@ -1026,24 +1066,65 @@
             }, 4000);
         }
 
+
+			let countValid = 0;
+			let countInvalid = 0;
+			
         function actualizarEstadisticas() {
-            const totalInvitados = invitados.length;
-            const confirmados = invitados.filter(inv => inv.confirmacion === true);
+            const totalDeInvitados = invitados.length;
+            const confirmados = invitados.filter(inv => inv.confirmacion === true);			
+			
+            const totalConfirmados = document.getElementById('totalConfirmados');			
+            const totalInvitados = document.getElementById('totalInvitados');			
+            const noVan = document.getElementById('noVan');			
             
-            document.getElementById('totalInvitados').textContent = totalInvitados;
-            document.getElementById('totalConfirmados').textContent = confirmados.length;
+            totalInvitados.textContent = totalDeInvitados;
+            totalConfirmados.textContent = confirmados.length;
             
             const confirmedList = document.getElementById('confirmedList');
-            confirmedList.innerHTML = '';
+			if (!confirmedList) {
+			  console.error("No existe el div con id 'confirmedList'");
+			  return;
+			}else{   confirmedList.innerHTML = '';}
             
             if (confirmados.length === 0) {
                 confirmedList.innerHTML = '<p style="color: #999; font-size: 14px; text-align: center; margin-top: 10px;">No hay confirmados aún</p>';
             } else {
-                confirmados.forEach(inv => {
-                    const div = document.createElement('div');
-                    div.className = 'confirmed-name';
-                    div.textContent = inv.nombre;
-                    confirmedList.appendChild(div);
+                invitados.forEach(inv => {
+                    const containerInvitados = document.createElement('div');
+					containerInvitados.style.display='flex';
+					containerInvitados.className = 'container_invitados';
+					
+                    const divName = document.createElement('p');
+                    divName.className = 'confirmed_name';
+                    divName.textContent = inv.nombre;
+					divName.setAttribute('data-id', `${inv.id}`);
+					
+					const divStatus = document.createElement('p');
+                    divStatus.className = 'div_status';
+					
+                    divStatus.textContent = inv.confirmacion ? "Esta vez voy" : "No me deja el médico.";
+					divStatus.style.color = inv.confirmacion ? "green" : "red";
+					// Contabilizar
+					inv.confirmacion ? countValid++ : countInvalid++;
+					
+					
+					containerInvitados.appendChild(divName);
+					containerInvitados.appendChild(divStatus);
+					
+					
+					const resumen = document.createElement("p");
+					resumen.textContent = `Válidos: ${countValid} | Inválidos: ${countInvalid}`;
+					resumen.style.marginTop = "1rem";
+					resumen.style.fontSize = "1.1rem";
+					resumen.style.fontWeight = "600";
+
+			/*totalInvitados.textContent=`${countValid}`;*/
+			
+			noVan.textContent=`${countInvalid}`;
+
+                    confirmedList.appendChild(containerInvitados);
+					/*confirmedList.append(resumen);*/
                 });
             }
         }
@@ -1123,130 +1204,6 @@
 			return `${p1}.${p2}.${p3}-${p4}`;
 		}
 		
-        document.getElementById('asistenciaForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Limpiar errores previos
-            document.querySelectorAll('.error').forEach((elem, indice) => {
-				removerClasesError(elem, 'show');
-				
-			  });
-			  
-			  //TERNARIO1
-			  ///ternario2
-			  /*document.querySelectorAll('.error').forEach((elem, indice) => { 
-				if(elem.classList.contains('show')){ 
-					elem.classList.remove('show');
-					console.log(`Se quitó 'show' del elemento .error -`, indice); 
-				 } 
-			  }); */
-			  
-			  /*console.log(  
-					elem.classList.contains('show')
-				     ? "El .error tiene 'show'"+indice 
-				     : "El .error NO tiene 'show'"+indice,elem 
-				   ) */
-				//elem.classList.contains('show') 
-					//? console.log("show") 
-					//: console.log('El elemento NO tiene la clase "show".');
-					
-			/*removerClasesError(error,'show')}); 
-            document.querySelectorAll('.error').forEach(error => error.classList.remove('show'));*/
-			
-            document.querySelectorAll('input, select').forEach(field => field.classList.remove('error-field'));
-            
-            const nombre = document.getElementById('nombre').value.trim(); //si es vacio
-			const inputCedula = document.getElementById('ci');
-			const errorCedula  = document.getElementById('ciError');
-            const confirmacionValue = document.getElementById('confirmacion').value;
-			
-            let esValido = true;
-            let esNumberOk = true;
-            
-            // Validar nombre (requerido)
-            if (!nombre) {
-                document.getElementById('nombreError').classList.add('show');
-                document.getElementById('nombre').classList.add('error-field');
-                esValido = false;
-            }
-            
-            // Validar cédula (requerido)
-            if (estaVacio(inputCedula)) {
-                errorCedula.classList.add('show');
-                errorCedula.textContent = "Este campo no puede estar vacío."; 
-                inputCedula.classList.add('error-field');
-                esValido = false;
-			}
-			
-			if(!tieneOchoDigitos(inputCedula)) {
-				/*errorCedula.classList.add('show');
-				errorCedula.textContent = "Solo 8 Numeros"; 
-				inputCedula.classList.add('error-field');*/
-				
-				//esValido = false;
-				esNumberOk = false;
-			}			
-				
-			            
-            // Validar confirmación (requerido)
-            if (!confirmacionValue) {
-                document.getElementById('confirmacionError').classList.add('show');
-                document.getElementById('confirmacion').classList.add('error-field');
-                esValido = false;
-            }
-					
-			
-			 if (!esValido) {
-                showModal(
-                    'Campos Incompletos',
-                    'Por favor completa todos los campos requeridos antes de continuar.',
-                    '❌',
-                    [{ text: 'Entendido', class: 'modal-btn-primary' }]
-                );
-                return;
-            }
-			if(!esNumberOk){
-				showModal(
-                    'Campos Incompletos',
-                    'Zapallera! fijate cantidad de Numeros en la Cédula.',
-                    '🍄',
-                    [{ text: 'VOY', class: 'modal-btn-primary' }]
-                );
-                return;
-			}
-            
-			
-            
-            
-            const confirmacion = confirmacionValue === 'true';
-            
-            // Si seleccionó "No", mostrar confirmación
-            if (!confirmacion) {
-                showModal(
-                    '¿Estás seguro?',
-                    '¿Confirmas que no podrás asistir a la celebración? Nos encantaría contar con tu presencia.',
-                    '⚠️',
-                    [
-                        { 
-                            text: 'Cancelar', 
-                            class: 'modal-btn-secondary'
-                        },
-                        { 
-                            text: 'Sí, no podré asistir', 
-                            class: 'modal-btn-primary',
-                            callback: () => registrarInvitado(nombre, cedulaFormateada, confirmacion)
-                        }
-                    ]
-                );
-                return;
-            }	
-			
-			console.log("Formulario válido. Procesando..."+Number.isNaN(Number(cedulaFormateada)));
-			 
-            registrarInvitado(nombre, cedulaFormateada, confirmacion);
-			
-        });
-
         function registrarInvitado(nombre, ciValue, confirmacion) {
             // Crear invitado con todos los datos requeridos
             const invitado = {
@@ -1415,7 +1372,21 @@ function validarCI(ciInput){
     window.open("https://www.google.com/maps?q=-34.783494,-55.864592", "_blank");
   }
   
+  //*******************  AUDIO  *******************************************/
   
+  const audio = document.getElementById('mi-audio');
+const boton = document.getElementById('boton-reproducir');
+
+boton.addEventListener('click', () => {
+  if (audio.paused) {
+    audio.play();
+    boton.textContent = 'Pausar';
+  } else {
+    audio.pause();
+    boton.textContent = 'Reproducir';
+  }
+});
+//******************************************************************************/
 		
 		// Inicializar
         document.addEventListener('DOMContentLoaded', () => {            
