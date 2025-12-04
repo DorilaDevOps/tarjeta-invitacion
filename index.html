@@ -576,17 +576,23 @@
 			display:flex;
 			max-height: 150px;
 		}
+		
 		.img_amigos{ width: 50%;    object-fit: cover;padding-left: 5px;}
 		
 		audio {
-		  width: 300px; /* Ajusta el ancho */
+		  width: 100px; 
 		  margin: 5px;
+		  box-shadow: 0px 1px 7px black;
+		  border-radius: 5px;
 		}
 		.mi-reproductor-audio {
-			display:flex;
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(80px, 110px));
+			justify-items: stretch;
+			justify-content: space-between;
 			align-items: center;
-		  border: 1px solid var(--otio_azul);
-		  border-radius: 5px;
+			border: 1px solid var(--otio_azul);
+			border-radius: 5px;
 		}
 
         .table-container {
@@ -945,21 +951,41 @@
 			</div>
 			<div class="mi-reproductor-audio">
 				<audio controls>
+				  <source src="assets/bob marley - get up stand up.mp3" type="audio/mpeg">
+				  Tu navegador no soporta el audio.
+				</audio>
+				<audio controls>
 				  <source src="assets/saludo araca la cana 1937.mp3" type="audio/mpeg">
 				  <source src="assets/saludo araca la cana 1937.mp3" type="audio/ogg">
 				  Tu navegador no soporta el audio.
 				</audio>
 				<audio controls>
-				  <source src="assets/auyentando el miedo -zero.mp3" type="audio/mpeg">
+				  <source src="assets/2 ELO - Last Train To London.mp3" type="audio/mpeg">
 				  Tu navegador no soporta el audio.
 				</audio>
 				<audio controls>
-				  <source src="assets/Dr Alban - No Coke (Official HD).mp3" type="audio/mpeg">
+				  <source src="assets/ac dc - back in black467247 - Copy.mp3" type="audio/mpeg">
+				  Tu navegador no soporta el audio.
+				</audio>
+				<audio controls>
+				  <source src="assets/12 Devo - Whip It.mp3" type="audio/mpeg">
+				  Tu navegador no soporta el audio.
+				</audio>
+				<audio controls>
+				  <source src="assets/08 - La Muerte Elegante.mp3" type="audio/mpeg">
+				  Tu navegador no soporta el audio.
+				</audio>
+				<audio controls>
+				  <source src="assets/Kortatu - Guernika 37-87.mp3" type="audio/mpeg">
+				  Tu navegador no soporta el audio.
+				</audio>
+				<audio controls>
+				  <source src="assets/House Of Pain - All That [#3].mp3" type="audio/mpeg">
 				  Tu navegador no soporta el audio.
 				</audio>
 				<div>
 					<button id="boton-reproducir">▶️</button>
-					<audio id="mi-audio" src="assets/APIECEOFMINE.mp3"></audio>
+					<audio id="mi-audio" src="assets/26 schumacher.mp3"></audio>
 				</div>
 			</div>
 			
